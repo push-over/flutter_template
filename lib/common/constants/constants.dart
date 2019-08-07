@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class GZColors {
   static const int primaryValue = 0xFF24292E;
@@ -56,6 +57,20 @@ abstract class GZIcons {
       IconData(0xe7d5, fontFamily: GZIcons.FONT_FAMILY);
   static const IconData PROFILE_FILL =
       IconData(0xe7d9, fontFamily: GZIcons.FONT_FAMILY);
+
+  static const IconData MESSAGE =
+      IconData(0xe7e0, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData RECORDING =
+      IconData(0xe971, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData BLOG =
+      IconData(0xe8de, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData QUESTION_AND_ANSWER =
+      IconData(0xe893, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData ACTIVITY =
+      IconData(0xe6c5, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData TAG = IconData(0xe752, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData SHARE_LIGHT =
+      IconData(0xe7e1, fontFamily: GZIcons.FONT_FAMILY);
 }
 
 abstract class GZConstant {
