@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class GZColors {
   static const int primaryValue = 0xFF24292E;
   static const int primaryLightValue = 0xFF42464b;
   static const int primaryDarkValue = 0xFF121917;
+
+  static const int line = 0xFFAAAAAA;
 
   static const MaterialColor primarySwatch = const MaterialColor(
     primaryValue,
@@ -41,6 +42,7 @@ abstract class GZIcons {
 
   static const String FONT_FAMILY = 'openSource';
 
+  /// BottomNavigationBar
   static const IconData NEWS =
       IconData(0xe7c5, fontFamily: GZIcons.FONT_FAMILY);
   static const IconData NEWS_FILL =
@@ -58,6 +60,7 @@ abstract class GZIcons {
   static const IconData PROFILE_FILL =
       IconData(0xe7d9, fontFamily: GZIcons.FONT_FAMILY);
 
+  /// ProfilePage
   static const IconData MESSAGE =
       IconData(0xe7e0, fontFamily: GZIcons.FONT_FAMILY);
   static const IconData RECORDING =
@@ -71,6 +74,22 @@ abstract class GZIcons {
   static const IconData TAG = IconData(0xe752, fontFamily: GZIcons.FONT_FAMILY);
   static const IconData SHARE_LIGHT =
       IconData(0xe7e1, fontFamily: GZIcons.FONT_FAMILY);
+
+  /// DiscoverPage
+  static const IconData SOFTWARE =
+      IconData(0xe6ce, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData GITEE =
+      IconData(0xe601, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData CODE =
+      IconData(0xe846, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData SCAN =
+      IconData(0xe7db, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData SHAKE =
+      IconData(0xe608, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData PEOPLE =
+      IconData(0xe651, fontFamily: GZIcons.FONT_FAMILY);
+  static const IconData ACTIVITY_LINE =
+      IconData(0xe691, fontFamily: GZIcons.FONT_FAMILY);
 }
 
 abstract class GZConstant {

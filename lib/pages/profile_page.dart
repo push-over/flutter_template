@@ -3,6 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_template/common/redux/gz_state.dart';
 import 'package:flutter_template/common/constants/constants.dart';
+import 'package:flutter_template/common/utils/screenutil_utils.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -56,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return StoreBuilder<GZState>(
       builder: (BuildContext context, Store store) {
         return Container(
-          height: 150.0,
+          height: S.h(300),
           color: store.state.themeData.primaryColor,
           child: Center(
             child: Column(
@@ -64,13 +65,13 @@ class _ProfilePageState extends State<ProfilePage> {
               children: <Widget>[
                 GestureDetector(
                   child: Container(
-                    width: 60.0,
-                    height: 60.0,
+                    width: S.w(120),
+                    height: S.w(120),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: Color(0xffffffff),
-                        width: 2.0,
+                        width: S.w(4),
                       ),
                       image: DecorationImage(
                         image: NetworkImage(GZIcons.DEFAULT_REMOTE_PIC),
@@ -80,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height: S.h(20),
                 ),
                 Text(
                   'Praise',
