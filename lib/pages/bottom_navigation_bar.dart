@@ -1,5 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_template/common/event/http_error_event.dart';
+import 'package:flutter_template/common/event/event.dart';
+import 'package:flutter_template/common/network/code.dart';
 import 'package:flutter_template/widget/gz_drawer.dart';
 import 'package:flutter_template/common/constants/constants.dart';
 
@@ -14,6 +19,7 @@ class GZBottomNavigationBar extends StatefulWidget {
 }
 
 class _GZBottomNavigationBarState extends State<GZBottomNavigationBar> {
+  StreamSubscription stream;
   int _currentIndex = 0;
   PageController _pageController = PageController(initialPage: 0);
   List<Widget> _pages;
@@ -52,6 +58,43 @@ class _GZBottomNavigationBarState extends State<GZBottomNavigationBar> {
       DiscoverPage(),
       ProfilePage(),
     ];
+
+    stream = eventBus.on<HttpErrorEvent>().listen((event) {
+      errorHandleFunction(event.code, event.message);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    if (stream != null) {
+      stream.cancel();
+      stream = null;
+    }
+  }
+
+  /// 网络错误提醒
+  errorHandleFunction(int code, message) {
+    switch (code) {
+      case Code.NETWORK_ERROR:
+        Fluttertoast.showToast(msg: '网络错误');
+        break;
+      case 401:
+        Fluttertoast.showToast(msg: '[401错误可能: 未授权 \\ 授权登录失败 \\ 登录过期]');
+        break;
+      case 403:
+        Fluttertoast.showToast(msg: '403权限错误');
+        break;
+      case 404:
+        Fluttertoast.showToast(msg: '404错误');
+        break;
+      case Code.NETWORK_TIMEOUT:
+        Fluttertoast.showToast(msg: '请求超时');
+        break;
+      default:
+        Fluttertoast.showToast(msg: '其他异常' + " " + message);
+        break;
+    }
   }
 
   @override

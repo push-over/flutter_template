@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/common/config/config.dart';
 
 abstract class GZColors {
   static const int primaryValue = 0xFF24292E;
@@ -40,56 +41,55 @@ abstract class GZIcons {
   static const String DEFAULT_REMOTE_PIC =
       'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1700741544,1951185347&fm=26&gp=0.jpg';
 
-  static const String FONT_FAMILY = 'openSource';
-
   /// BottomNavigationBar
   static const IconData NEWS =
-      IconData(0xe7c5, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7c5, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData NEWS_FILL =
-      IconData(0xe7c4, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7c4, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData TWEET =
-      IconData(0xe7d7, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7d7, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData TWEET_FILL =
-      IconData(0xe7d8, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7d8, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData DISCOVER =
-      IconData(0xe67e, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe67e, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData DISCOVER_FILL =
-      IconData(0xe6ba, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe6ba, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData PROFILE =
-      IconData(0xe7d5, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7d5, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData PROFILE_FILL =
-      IconData(0xe7d9, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7d9, fontFamily: GZConfig.FONT_FAMILY);
 
   /// ProfilePage
   static const IconData MESSAGE =
-      IconData(0xe7e0, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7e0, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData RECORDING =
-      IconData(0xe971, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe971, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData BLOG =
-      IconData(0xe8de, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe8de, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData QUESTION_AND_ANSWER =
-      IconData(0xe893, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe893, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData ACTIVITY =
-      IconData(0xe6c5, fontFamily: GZIcons.FONT_FAMILY);
-  static const IconData TAG = IconData(0xe752, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe6c5, fontFamily: GZConfig.FONT_FAMILY);
+  static const IconData TAG =
+      IconData(0xe752, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData SHARE_LIGHT =
-      IconData(0xe7e1, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7e1, fontFamily: GZConfig.FONT_FAMILY);
 
   /// DiscoverPage
   static const IconData SOFTWARE =
-      IconData(0xe6ce, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe6ce, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData GITEE =
-      IconData(0xe601, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe601, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData CODE =
-      IconData(0xe846, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe846, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData SCAN =
-      IconData(0xe7db, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe7db, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData SHAKE =
-      IconData(0xe608, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe608, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData PEOPLE =
-      IconData(0xe651, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe651, fontFamily: GZConfig.FONT_FAMILY);
   static const IconData ACTIVITY_LINE =
-      IconData(0xe691, fontFamily: GZIcons.FONT_FAMILY);
+      IconData(0xe691, fontFamily: GZConfig.FONT_FAMILY);
 }
 
 abstract class GZConstant {

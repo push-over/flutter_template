@@ -3,6 +3,7 @@ import 'package:flutter_template/common/constants/constants.dart';
 import 'package:flutter_template/common/utils/screenutil_utils.dart';
 
 class DiscoverPage extends StatelessWidget {
+
   List<Map<String, IconData>> blocks = [
     {
       '开源软件': GZIcons.SOFTWARE,
