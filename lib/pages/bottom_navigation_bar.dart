@@ -73,30 +73,6 @@ class _GZBottomNavigationBarState extends State<GZBottomNavigationBar> {
     }
   }
 
-  /// 网络错误提醒
-  errorHandleFunction(int code, message) {
-    switch (code) {
-      case Code.NETWORK_ERROR:
-        Fluttertoast.showToast(msg: '网络错误');
-        break;
-      case 401:
-        Fluttertoast.showToast(msg: '[401错误可能: 未授权 \\ 授权登录失败 \\ 登录过期]');
-        break;
-      case 403:
-        Fluttertoast.showToast(msg: '403权限错误');
-        break;
-      case 404:
-        Fluttertoast.showToast(msg: '404错误');
-        break;
-      case Code.NETWORK_TIMEOUT:
-        Fluttertoast.showToast(msg: '请求超时');
-        break;
-      default:
-        Fluttertoast.showToast(msg: '其他异常' + " " + message);
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
@@ -142,5 +118,29 @@ class _GZBottomNavigationBarState extends State<GZBottomNavigationBar> {
           )
           .toList(),
     );
+  }
+
+  /// 网络错误提醒
+  errorHandleFunction(int code, message) {
+    switch (code) {
+      case Code.NETWORK_ERROR:
+        Fluttertoast.showToast(msg: '网络错误');
+        break;
+      case 401:
+        Fluttertoast.showToast(msg: '[401错误可能: 未授权 \\ 授权登录失败 \\ 登录过期]');
+        break;
+      case 403:
+        Fluttertoast.showToast(msg: '403权限错误');
+        break;
+      case 404:
+        Fluttertoast.showToast(msg: '404错误');
+        break;
+      case Code.NETWORK_TIMEOUT:
+        Fluttertoast.showToast(msg: '请求超时');
+        break;
+      default:
+        Fluttertoast.showToast(msg: '其他异常' + " " + message);
+        break;
+    }
   }
 }

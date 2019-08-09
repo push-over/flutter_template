@@ -5,6 +5,7 @@ import 'package:flutter_template/common/redux/gz_state.dart';
 import 'package:flutter_template/common/constants/constants.dart';
 import 'package:flutter_template/pages/bottom_navigation_bar.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

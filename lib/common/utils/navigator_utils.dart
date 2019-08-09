@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_template/widget/gz_webview.dart';
+import 'package:redux/redux.dart';
 
 abstract class NavigatorUtils {
   /// 替换
@@ -17,6 +19,11 @@ abstract class NavigatorUtils {
   static NavigatorRouter(BuildContext context, Widget widget) {
     return Navigator.push(context,
         new CupertinoPageRoute(builder: (context) => pageContainer(widget)));
+  }
+
+  /// webview登录
+  static goLogin(BuildContext context, String url, String title, Store store) {
+    NavigatorRouter(context, GZWebview(url: url, title: title, store: store));
   }
 
   /// Page页面的容器，做一次通用自定义
@@ -39,11 +46,9 @@ abstract class NavigatorUtils {
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (BuildContext context) {
-        return pageContainer(
-          SafeArea(
-            child: builder(context),
-          )
-        );
+        return pageContainer(SafeArea(
+          child: builder(context),
+        ));
       },
     );
   }

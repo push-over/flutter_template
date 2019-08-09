@@ -4,6 +4,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_template/common/redux/gz_state.dart';
 import 'package:flutter_template/common/constants/constants.dart';
 import 'package:flutter_template/common/utils/screenutil_utils.dart';
+import 'package:flutter_template/common/network/address.dart';
+import 'package:flutter_template/common/utils/navigator_utils.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -12,11 +14,12 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   Map<String, IconData> menus;
+  String name;
+  String avatar;
 
   @override
   void initState() {
     super.initState();
-
     menus = {
       '我的消息': GZIcons.MESSAGE,
       '阅读记录': GZIcons.RECORDING,
@@ -64,27 +67,37 @@ class _ProfilePageState extends State<ProfilePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 GestureDetector(
-                  child: Container(
-                    width: S.w(120),
-                    height: S.w(120),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Color(0xffffffff),
-                        width: S.w(4),
-                      ),
-                      image: DecorationImage(
-                        image: NetworkImage(GZIcons.DEFAULT_REMOTE_PIC),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  child: store.state.userInfo != null
+                      ? Container(
+                          width: S.w(120),
+                          height: S.w(120),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Color(0xffffffff),
+                              width: S.w(4),
+                            ),
+                            image: DecorationImage(
+                              image: NetworkImage(store.state.userInfo.avatar),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : Image.asset(
+                          'static/images/ic_avatar_default.png',
+                          width: S.w(120),
+                          height: S.h(120),
+                        ),
+                  onTap: () => NavigatorUtils.goLogin(
+                      context, Address.OAUTH2_AUTHORIZE, '登陆开源社区', store),
                 ),
                 SizedBox(
                   height: S.h(20),
                 ),
                 Text(
-                  'Praise',
+                  store.state.userInfo != null
+                      ? store.state.userInfo.name
+                      : '点击头像登录',
                   style: GZConstant.normalTextWhite,
                 ),
               ],

@@ -4,6 +4,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_template/common/redux/gz_state.dart';
 import 'package:flutter_template/common/constants/constants.dart';
 import 'package:flutter_template/common/utils/utils.dart';
+import 'package:flutter_template/common/network/address.dart';
+import 'package:flutter_template/common/utils/navigator_utils.dart';
 
 class GZDrawer extends StatelessWidget {
   showThemeDialog(BuildContext context, Store store) {
@@ -39,18 +41,21 @@ class GZDrawer extends StatelessWidget {
                           color: store.state.themeData.primaryColor,
                         ),
                         accountName: Text(
-                          'praise',
+                          store.state.userInfo != null
+                          ? store.state.userInfo.name
+                          : '点击头像登录',
                           style: GZConstant.largeTextWhite,
                         ),
-                        accountEmail: Text(
-                          'push_over@163.com',
-                          style: GZConstant.normalTextLight,
-                        ),
+                        // accountEmail: Text(
+                        //   'push_over@163.com',
+                        //   style: GZConstant.normalTextLight,
+                        // ),
                         currentAccountPicture: GestureDetector(
-                          onTap: () {},
+                          onTap: () => NavigatorUtils.goLogin(
+                              context, Address.OAUTH2_AUTHORIZE, '登陆开源社区', store),
                           child: CircleAvatar(
                             backgroundImage: NetworkImage(
-                              GZIcons.DEFAULT_REMOTE_PIC,
+                              store.state.userInfo != null ? store.state.userInfo.avatar : GZIcons.DEFAULT_REMOTE_PIC,
                             ),
                           ),
                         ),

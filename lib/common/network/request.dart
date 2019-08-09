@@ -31,7 +31,7 @@ class HttpManager {
   /// [ params] 请求参数
   /// [ header] 外加头
   /// [ option] 配置
-  netFetch(url, params, Map<String, dynamic> header, Options option,
+  netFetch(String url, params, Map<String, dynamic> header, Options option,
       {noTip = false}) async {
     Map<String, dynamic> headers = new HashMap();
     if (header != null) {
@@ -65,7 +65,9 @@ class HttpManager {
 
     Response response;
     try {
-      response = await _dio.request(url, data: params, options: option);
+      String path = url.replaceAll('\t', '');
+      response = await _dio.request(path, data: params, options: option);
+
     } on DioError catch (e) {
       return resultError(e);
     }
