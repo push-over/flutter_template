@@ -1,15 +1,10 @@
-import 'dart:io';
-import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:redux/redux.dart';
 
 import 'package:flutter_template/common/config/config.dart';
 import 'package:flutter_template/common/dao/dao_result.dart';
-import 'package:flutter_template/common/utils/local_storage_utils.dart';
 import 'package:flutter_template/common/network/address.dart';
 import 'package:flutter_template/common/network/request.dart';
 import 'package:flutter_template/common/redux/user_redux.dart';
-import 'package:flutter_template/common/utils/utils.dart';
 
 import 'package:flutter_template/common/models/User.dart';
 

@@ -21,4 +21,8 @@ class Address {
   static OPENAPI_USER(String token) {
     return '${HOST}action/openapi/user?access_token=$token&dataType=${GZConfig.DATA_TYPE}';
   }
+
+  static NEWS_LIST(String token, int curPage) {
+    return '${HOST}action/openapi/news_list?access_token=$token&catalog=1&page=$curPage&pageSize=20&dataType=json';
+  }
 }

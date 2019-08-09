@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -71,11 +71,8 @@ class _GZWebviewState extends State<GZWebview> {
           withJavascript: widget.withJavascript,
           withLocalStorage: widget.withLocalStorage,
           withZoom: widget.withZoom,
-          initialChild: Container(
-            color: Colors.redAccent,
-            child: const Center(
-              child: Text('Waiting.....'),
-            ),
+          initialChild: Center(
+            child: CupertinoActivityIndicator(),
           ),
         );
       },
