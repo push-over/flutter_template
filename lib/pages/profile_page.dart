@@ -89,7 +89,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: S.h(120),
                         ),
                   onTap: () => NavigatorUtils.goLogin(
-                      context, Address.OAUTH2_AUTHORIZE, '登陆开源社区', store),
+                    context,
+                    Address.OAUTH2_AUTHORIZE,
+                    '登陆开源社区',
+                    store,
+                  ),
                 ),
                 SizedBox(
                   height: S.h(20),

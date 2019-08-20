@@ -36,11 +36,10 @@ class _GZWebviewState extends State<GZWebview> {
   @override
   void initState() {
     super.initState();
-
+    print(widget.url);
     _flutterWebviewPlugin.onUrlChanged.listen((String url) {
       if (url != null && url.isNotEmpty && url.contains('?code=')) {
         String code = url.split('?')[1].split('&')[0].split('=')[1];
-
         UserDao.GET_OAUTH2_TOKEN(code).then((res) async {
           if (res != null && res.result) {
             String token = res.data['access_token'];

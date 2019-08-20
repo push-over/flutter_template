@@ -23,7 +23,8 @@ abstract class NavigatorUtils {
 
   /// webview登录
   static goLogin(BuildContext context, String url, String title, Store store) {
-    NavigatorRouter(context, GZWebview(url: url, title: title, store: store));
+    String _url = url.replaceAll('\t', '');
+    NavigatorRouter(context, GZWebview(url: _url, title: title, store: store));
   }
 
   /// Page页面的容器，做一次通用自定义
