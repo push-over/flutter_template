@@ -42,20 +42,25 @@ class GZDrawer extends StatelessWidget {
                         ),
                         accountName: Text(
                           store.state.userInfo != null
-                          ? store.state.userInfo.name
-                          : '点击头像登录',
+                              ? store.state.userInfo.name
+                              : '点击头像登录',
                           style: GZConstant.largeTextWhite,
                         ),
-                        // accountEmail: Text(
-                        //   'push_over@163.com',
-                        //   style: GZConstant.normalTextLight,
-                        // ),
+                        accountEmail: Text(
+                          store.state.userInfo != null
+                              ? store.state.userInfo.email
+                              : '',
+                          style: GZConstant.normalTextLight,
+                        ),
                         currentAccountPicture: GestureDetector(
-                          onTap: () => NavigatorUtils.goLogin(
-                              context, Address.OAUTH2_AUTHORIZE, '登陆开源社区', store),
+//                          onTap: () => NavigatorUtils.goLogin(context,
+//                              Address.OAUTH2_AUTHORIZE, '登陆开源社区', store),
+                          onTap: () {},
                           child: CircleAvatar(
                             backgroundImage: NetworkImage(
-                              store.state.userInfo != null ? store.state.userInfo.avatar : GZIcons.DEFAULT_REMOTE_PIC,
+                              store.state.userInfo != null
+                                  ? store.state.userInfo.avatar
+                                  : GZIcons.DEFAULT_REMOTE_PIC,
                             ),
                           ),
                         ),

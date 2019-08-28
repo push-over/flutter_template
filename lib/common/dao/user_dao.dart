@@ -32,4 +32,16 @@ class UserDao {
       store.dispatch(new UpdateUserAction(userinfo));
     }
   }
+
+  static GET_MY_INFORMATION(String token) async {
+    var res =
+    await httpManager.netFetch(Address.MY_INFORMATION(token), null, null, null);
+    if (res != null) {
+      if (GZConfig.DEBUG) {
+        print(res.data.toString());
+      }
+
+      return DataResult(res.data, res.result);
+    }
+  }
 }

@@ -4,8 +4,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_template/common/redux/gz_state.dart';
 import 'package:flutter_template/common/constants/constants.dart';
 import 'package:flutter_template/common/utils/screenutil_utils.dart';
-import 'package:flutter_template/common/network/address.dart';
 import 'package:flutter_template/common/utils/navigator_utils.dart';
+import 'package:flutter_template/pages/profile_message.dart';
+import 'package:flutter_template/pages/profile_detail.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -46,7 +47,14 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           leading: Icon(menus.values.elementAt(index)),
           trailing: Icon(Icons.arrow_forward_ios),
-          onTap: () {},
+          onTap: () {
+            switch (menus.keys.elementAt(index)) {
+              case '我的消息':
+                NavigatorUtils.NavigatorRouter(context, MyMessagePage());
+                break;
+              default:
+            }
+          },
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -88,12 +96,18 @@ class _ProfilePageState extends State<ProfilePage> {
                           width: S.w(120),
                           height: S.h(120),
                         ),
-                  onTap: () => NavigatorUtils.goLogin(
-                    context,
-                    Address.OAUTH2_AUTHORIZE,
-                    '登陆开源社区',
-                    store,
-                  ),
+//                  onTap: () => NavigatorUtils.goLogin(
+//                    context,
+//                    Address.OAUTH2_AUTHORIZE,
+//                    '登陆开源社区',
+//                    store,
+//                  ),
+                  onTap: () {
+                    NavigatorUtils.NavigatorRouter(
+                      context,
+                      ProfileDetailPage(),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: S.h(20),

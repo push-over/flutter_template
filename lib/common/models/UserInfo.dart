@@ -12,14 +12,8 @@ class UserInfo extends Object {
   @JsonKey(name: 'name')
   String name;
 
-  @JsonKey(name: 'ident')
-  String ident;
-
   @JsonKey(name: 'gender')
   int gender;
-
-  @JsonKey(name: 'relation')
-  int relation;
 
   @JsonKey(name: 'province')
   String province;
@@ -42,10 +36,19 @@ class UserInfo extends Object {
   @JsonKey(name: 'portrait')
   String portrait;
 
+  @JsonKey(name: 'fansCount')
+  int fansCount;
+
+  @JsonKey(name: 'favoriteCount')
+  int favoriteCount;
+
+  @JsonKey(name: 'followersCount')
+  int followersCount;
+
   @JsonKey(name: 'notice')
   Notice notice;
 
-  UserInfo(this.uid,this.name,this.ident,this.gender,this.relation,this.province,this.city,this.platforms,this.expertise,this.joinTime,this.lastLoginTime,this.portrait,this.notice,);
+  UserInfo(this.uid,this.name,this.gender,this.province,this.city,this.platforms,this.expertise,this.joinTime,this.lastLoginTime,this.portrait,this.fansCount,this.favoriteCount,this.followersCount,this.notice,);
 
   factory UserInfo.fromJson(Map<String, dynamic> srcJson) => _$UserInfoFromJson(srcJson);
 
@@ -76,5 +79,3 @@ class Notice extends Object {
   Map<String, dynamic> toJson() => _$NoticeToJson(this);
 
 }
-
-

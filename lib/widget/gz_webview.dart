@@ -15,6 +15,7 @@ class GZWebview extends StatefulWidget {
   final bool withLocalStorage;
   final bool withJavascript;
   final Store store;
+  final bool isLogin;
 
   GZWebview(
       {Key key,
@@ -23,6 +24,7 @@ class GZWebview extends StatefulWidget {
       this.store,
       this.withZoom = true,
       this.withLocalStorage = true,
+      this.isLogin = true,
       this.withJavascript = true})
       : super(key: key);
 
@@ -36,20 +38,21 @@ class _GZWebviewState extends State<GZWebview> {
   @override
   void initState() {
     super.initState();
-    print(widget.url);
-    _flutterWebviewPlugin.onUrlChanged.listen((String url) {
-      if (url != null && url.isNotEmpty && url.contains('?code=')) {
-        String code = url.split('?')[1].split('&')[0].split('=')[1];
-        UserDao.GET_OAUTH2_TOKEN(code).then((res) async {
-          if (res != null && res.result) {
-            String token = res.data['access_token'];
-            await LocalStorage.save(GZConfig.TOKEN_KEY, token);
-            UserDao.GET_OPENAPI_USER(token, widget.store);
-          }
-        });
-        Navigator.pop(context, 'refresh');
-      }
-    });
+    if (widget.isLogin) {
+      _flutterWebviewPlugin.onUrlChanged.listen((String url) {
+        if (url != null && url.isNotEmpty && url.contains('?code=')) {
+          String code = url.split('?')[1].split('&')[0].split('=')[1];
+          UserDao.GET_OAUTH2_TOKEN(code).then((res) async {
+            if (res != null && res.result) {
+              String token = res.data['access_token'];
+              await LocalStorage.save(GZConfig.TOKEN_KEY, token);
+              UserDao.GET_OPENAPI_USER(token, widget.store);
+            }
+          });
+          Navigator.pop(context, 'refresh');
+        }
+      });
+    }
   }
 
   @override

@@ -10,9 +10,7 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
   return UserInfo(
     json['uid'] as int,
     json['name'] as String,
-    json['ident'] as String,
     json['gender'] as int,
-    json['relation'] as int,
     json['province'] as String,
     json['city'] as String,
     (json['platforms'] as List)?.map((e) => e as String)?.toList(),
@@ -20,6 +18,9 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
     json['joinTime'] as String,
     json['lastLoginTime'] as String,
     json['portrait'] as String,
+    json['fansCount'] as int,
+    json['favoriteCount'] as int,
+    json['followersCount'] as int,
     json['notice'] == null
         ? null
         : Notice.fromJson(json['notice'] as Map<String, dynamic>),
@@ -29,9 +30,7 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
       'uid': instance.uid,
       'name': instance.name,
-      'ident': instance.ident,
       'gender': instance.gender,
-      'relation': instance.relation,
       'province': instance.province,
       'city': instance.city,
       'platforms': instance.platforms,
@@ -39,6 +38,9 @@ Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
       'joinTime': instance.joinTime,
       'lastLoginTime': instance.lastLoginTime,
       'portrait': instance.portrait,
+      'fansCount': instance.fansCount,
+      'favoriteCount': instance.favoriteCount,
+      'followersCount': instance.followersCount,
       'notice': instance.notice,
     };
 

@@ -12,6 +12,8 @@ import 'package:flutter_template/pages/news_page.dart';
 import 'package:flutter_template/pages/discover_page.dart';
 import 'package:flutter_template/pages/tweet_page.dart';
 import 'package:flutter_template/pages/profile_page.dart';
+import 'package:flutter_template/pages/publish_tweet.dart';
+import 'package:flutter_template/common/utils/navigator_utils.dart';
 
 class GZBottomNavigationBar extends StatefulWidget {
   @override
@@ -82,6 +84,15 @@ class _GZBottomNavigationBarState extends State<GZBottomNavigationBar> {
         elevation: 0.0,
       ),
       drawer: GZDrawer(),
+      floatingActionButton: _currentIndex == 1 ? FloatingActionButton(
+        onPressed: () {
+          NavigatorUtils.NavigatorRouter(
+            context,
+            PublishTweetPage(),
+          );
+        },
+        child: Icon(Icons.add),
+      ) : null,
       body: PageView.builder(
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) => _pages[index],
@@ -111,10 +122,10 @@ class _GZBottomNavigationBarState extends State<GZBottomNavigationBar> {
       items: _navigationBar
           .map(
             (item) => BottomNavigationBarItem(
-                  title: Text(item['title']),
-                  icon: Icon(item['icon']),
-                  activeIcon: Icon(item['activeIcon']),
-                ),
+              title: Text(item['title']),
+              icon: Icon(item['icon']),
+              activeIcon: Icon(item['activeIcon']),
+            ),
           )
           .toList(),
     );

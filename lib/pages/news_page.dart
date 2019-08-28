@@ -7,8 +7,14 @@ import 'package:flutter_template/common/utils/screenutil_utils.dart';
 import 'package:flutter_template/common/config/config.dart';
 import 'package:flutter_template/common/models/NewsList.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_easyrefresh/phoenix_footer.dart';
-import 'package:flutter_easyrefresh/phoenix_header.dart';
+import 'package:flutter_easyrefresh/material_header.dart';
+import 'package:flutter_easyrefresh/material_footer.dart';
+
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_template/common/redux/gz_state.dart';
+import 'package:flutter_template/common/utils/navigator_utils.dart';
+import 'package:flutter_template/widget/gz_webview.dart';
 
 class NewsPage extends StatefulWidget {
   @override
@@ -18,6 +24,7 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   EasyRefreshController _controller;
   ScrollController _scrollController;
+
   var _newsList;
   bool init = false;
   int curPage = 1;
@@ -35,14 +42,15 @@ class _NewsPageState extends State<NewsPage> {
       NewsDao.GET_NEWS_LIST(token, curPage).then((res) async {
         if (res != null && res.result) {
           var newsList = NewsList.fromJson(res.data);
-          if (!mounted) return;
-          setState(() {
-            if (isLoadMore) {
-              _newsList.addAll(newsList.newslist);
-            } else {
-              _newsList = newsList.newslist;
-            }
-          });
+          if (mounted) {
+            setState(() {
+              if (isLoadMore) {
+                _newsList.addAll(newsList.newslist);
+              } else {
+                _newsList = newsList.newslist;
+              }
+            });
+          }
         }
       });
     }
@@ -65,39 +73,50 @@ class _NewsPageState extends State<NewsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return _newsList != null
-        ? EasyRefresh(
-            controller: _controller,
-            header: PhoenixHeader(),
-            footer: PhoenixFooter(),
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: _newsList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return _buildNewsListItem(index);
-              },
-            ),
-            onRefresh: () async {
-              _getNewsList(false);
-              _controller.resetLoadState();
-            },
-            onLoad: () async {
-              if (mounted) {
-                setState(() {
-                  curPage++;
-                });
-              }
-              _getNewsList(true);
-            },
-          )
-        : Center(
-            child: CupertinoActivityIndicator(),
-          );
+    return StoreBuilder<GZState>(
+      builder: (BuildContext context, Store store) {
+        return _newsList != null
+            ? EasyRefresh(
+                controller: _controller,
+                header: MaterialHeader(),
+                footer: MaterialFooter(),
+                child: ListView.builder(
+                  controller: _scrollController,
+                  itemCount: _newsList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return _buildNewsListItem(index, store);
+                  },
+                ),
+                onRefresh: () async {
+                  await _getNewsList(false);
+                },
+                onLoad: () async {
+                  if (mounted) {
+                    setState(() {
+                      curPage++;
+                    });
+                  }
+                  await _getNewsList(true);
+                },
+              )
+            : Center(
+                child: CupertinoActivityIndicator(),
+              );
+      },
+    );
   }
 
-  Widget _buildNewsListItem(int index) {
+  Widget _buildNewsListItem(int index, Store store) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        NavigatorUtils.NavigatorRouter(
+          context,
+          GZWebview(
+              url: 'https://www.oschina.net/news/${_newsList[index].id}',
+              title: _newsList[index].title,
+              store: store),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.only(left: 20.0),
         decoration: BoxDecoration(
