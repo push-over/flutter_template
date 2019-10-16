@@ -23,12 +23,12 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     menus = {
       '我的消息': GZIcons.MESSAGE,
-      '阅读记录': GZIcons.RECORDING,
-      '我的博客': GZIcons.BLOG,
-      '我的问答': GZIcons.QUESTION_AND_ANSWER,
-      '我的活动': GZIcons.ACTIVITY,
-      '关注标签': GZIcons.TAG,
-      '邀请好友': GZIcons.SHARE_LIGHT
+//      '阅读记录': GZIcons.RECORDING,
+//      '我的博客': GZIcons.BLOG,
+//      '我的问答': GZIcons.QUESTION_AND_ANSWER,
+//      '我的活动': GZIcons.ACTIVITY,
+//      '关注标签': GZIcons.TAG,
+//      '邀请好友': GZIcons.SHARE_LIGHT
     };
   }
 

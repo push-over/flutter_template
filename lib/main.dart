@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: store.state.themeData,
-//            home: GZBottomNavigationBar(),
+            home: GridView(),
             routes: {
               WELCOME_PAGE: (BuildContext context) {
                 return WelcomePage();
